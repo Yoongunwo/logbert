@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore")
+
 import numpy as np
 import scipy.stats as stats
 import seaborn as sns
@@ -150,7 +153,7 @@ class Predictor():
                                  corpus_lines=self.corpus_lines, on_memory=self.on_memory, predict_mode=True, mask_ratio=self.mask_ratio)
 
         # use large batch size in test data
-        data_loader = DataLoader(seq_dataset, batch_size=self.batch_size, num_workers=self.num_workers,
+        data_loader = DataLoader(seq_dataset, batch_size=self.batch_size, num_workers=0,
                                  collate_fn=seq_dataset.collate_fn)
 
         for idx, data in enumerate(data_loader):
