@@ -83,7 +83,7 @@ class Trainer():
         self.train_data_loader = DataLoader(train_dataset, batch_size=self.batch_size, num_workers=self.num_workers,
                                       collate_fn=train_dataset.collate_fn, drop_last=True)
         self.valid_data_loader = DataLoader(valid_dataset, batch_size=self.batch_size, num_workers=self.num_workers,
-                                       collate_fn=train_dataset.collate_fn, drop_last=True)
+                                       collate_fn=train_dataset.collate_fn, drop_last=False)
         del train_dataset
         del valid_dataset
         del logkey_train
