@@ -11,8 +11,8 @@ import numpy as np
 from logparser import Spell, Drain
 
 # get [log key, delta time] as input for deeplog
-input_dir  = os.path.expanduser('~/.dataset/hdfs/')
-output_dir = '../output/hdfs/'  # The output directory of parsing results
+input_dir  = os.path.expanduser('../../Data/HDFS/')
+output_dir = '../../Data/HDFS/logbert/'  # The output directory of parsing results
 log_file   = "HDFS.log"  # The input log file name
 
 log_structured_file = output_dir + log_file + "_structured.csv"
@@ -80,7 +80,7 @@ def hdfs_sampling(log_file, window='session'):
 
 def generate_train_test(hdfs_sequence_file, n=None, ratio=0.3):
     blk_label_dict = {}
-    blk_label_file = os.path.join(input_dir, "anomaly_label.csv")
+    blk_label_file = os.path.join(input_dir, "preprocessed/anomaly_label.csv")
     blk_df = pd.read_csv(blk_label_file)
     for _ , row in tqdm(blk_df.iterrows()):
         blk_label_dict[row["BlockId"]] = 1 if row["Label"] == "Anomaly" else 0
