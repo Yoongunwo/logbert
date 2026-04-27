@@ -14,8 +14,10 @@ from bert_pytorch.dataset import WordVocab
 from bert_pytorch import Predictor, Trainer
 from bert_pytorch.dataset.utils import seed_everything
 
+DEVICE = "cuda:0"
+
 options = dict()
-options['device'] = 'cuda' if torch.cuda.is_available() else 'cpu'
+options['device'] = DEVICE
 options["output_dir"] = "../../Data/HDFS/logbert/"
 options["model_dir"] = options["output_dir"] + "bert/"
 options["model_path"] = options["model_dir"] + "best_bert.pth"

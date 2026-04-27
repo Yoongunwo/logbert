@@ -21,7 +21,9 @@ options["output_dir"] = output_dir
 options["train_vocab"] = output_dir + "train"
 options["vocab_path"] = output_dir + "vocab.pkl"
 
-options['device'] = 'cuda' if torch.cuda.is_available() else 'cpu'
+DEVICE = "cuda:0"
+
+options['device'] = DEVICE
 
 # Smaple
 options['sample'] = "sliding_window"
