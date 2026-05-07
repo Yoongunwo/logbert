@@ -1,5 +1,14 @@
 # For Me
 
+## BGL dataset
+
+- use `BGL/logbert_seq.py`
+
+```
+# train_ratio=0.3 → 앞 30%만 순차적으로 학습
+python logbert_seq.py train -r 0.3
+```
+
 # LogBERT: Log Anomaly Detection via BERT
 
 ### [ARXIV](https://arxiv.org/abs/2103.04475)
