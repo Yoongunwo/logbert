@@ -189,6 +189,8 @@ if __name__ == "__main__":
     train_parser.add_argument("-r", "--ratio", type=float, default=None,
                               help="Override train_ratio (0~1]. "
                                    "First ratio*total sessions used, time-sequential.")
+    train_parser.add_argument("--model_dir", type=str, default=None,
+                              help="Override model output directory (default: ../output/bgl/bert/)")
 
     predict_parser = subparsers.add_parser('predict')
     predict_parser.set_defaults(mode='predict')
@@ -208,6 +210,11 @@ if __name__ == "__main__":
         if hasattr(args, 'ratio') and args.ratio is not None:
             options["train_ratio"] = args.ratio
             print(f"[logbert_seq] train_ratio overridden → {args.ratio} (sequential)")
+        if hasattr(args, 'model_dir') and args.model_dir is not None:
+            options["model_dir"]  = args.model_dir.rstrip('/') + '/'
+            options["model_path"] = options["model_dir"] + "best_bert.pth"
+            options["scale_path"] = options["model_dir"] + "scale.pkl"
+            print(f"[logbert_seq] model_dir overridden → {options['model_dir']}")
         Trainer(options).train()
 
     elif args.mode == 'predict':
